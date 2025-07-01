@@ -1,6 +1,9 @@
 <script lang="ts">
-	import BarraSuperior from "./components/BarraSuperior.svelte";
-	import Titulo from "./components/Titulo.svelte";
+	import BarraSuperior from './components/BarraSuperior.svelte';
+	import Titulo from './components/Titulo.svelte';
+	import type IUsuario from './interfaces/IUsuario';
+
+	let usuario: IUsuario = {};
 
 	let valorInput = "João";
 
