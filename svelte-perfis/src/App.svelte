@@ -1,21 +1,21 @@
 <script lang="ts">
-	import BarraSuperior from './components/BarraSuperior.svelte';
-	import Titulo from './components/Titulo.svelte';
-	import type IUsuario from './interfaces/IUsuario';
+	import BarraSuperior from "./components/BarraSuperior.svelte";
+	import Titulo from "./components/Titulo.svelte";
+	import type IUsuario from "./interfaces/IUsuario";
 
-	let usuario: IUsuario = {
-		avatar_url: 'https://github.com/joao-robertoo.png',
-		login: 'joao-robertoo',
-		nome: 'João Roberto',
-		perfil_url: 'https://github.com/joao-robertoo',
-		repositorios_publicos: 45,
-		seguidores: 4
-	};
+	let usuario: IUsuario = null;
 
 	let valorInput = "João";
 
 	function aoSubmeter() {
-		console.log(valorInput);
+		usuario = {
+			avatar_url: "https://github.com/joao-robertoo.png",
+			login: "joao-robertoo",
+			nome: "João Roberto",
+			perfil_url: "https://github.com/joao-robertoo",
+			repositorios_publicos: 45,
+			seguidores: 4,
+		};
 	}
 </script>
 
@@ -35,34 +35,40 @@
 			</form>
 		</div>
 	</header>
-	<div class="card-usuario">
-		<BarraSuperior />
 
-		<div class="usuario">
-			<div class="foto-container">
-				<a href={usuario.perfil_url} target="_blank" rel="noopener">
-					<div class="foto-usuario"
-					style:background-image="url({usuario.avatar_url})"
-					></div>
-				</a>
-			</div>
+	{#if usuario}
+		<div class="card-usuario">
+			<BarraSuperior />
 
-			<div class="detalhes-usuario">
-				<div class="info">
-					Nome: <span>{usuario.nome}</span>
+			<div class="usuario">
+				<div class="foto-container">
+					<a href={usuario.perfil_url} target="_blank" rel="noopener">
+						<div
+							class="foto-usuario"
+							style:background-image="url({usuario.avatar_url})"
+						></div>
+					</a>
 				</div>
-				<div class="info">
-					Usuário: <span>{usuario.login}</span>
-				</div>
-				<div class="info">
-					Seguidores: <span>{usuario.seguidores}</span>
-				</div>
-				<div class="info">
-					Repositórios: <span>{usuario.repositorios_publicos}</span>
+
+				<div class="detalhes-usuario">
+					<div class="info">
+						Nome: <span>{usuario.nome}</span>
+					</div>
+					<div class="info">
+						Usuário: <span>{usuario.login}</span>
+					</div>
+					<div class="info">
+						Seguidores: <span>{usuario.seguidores}</span>
+					</div>
+					<div class="info">
+						Repositórios: <span
+							>{usuario.repositorios_publicos}</span
+						>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	{/if}
 </div>
 
 <style>
