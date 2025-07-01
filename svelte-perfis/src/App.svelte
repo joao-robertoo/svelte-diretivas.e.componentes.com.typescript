@@ -6,17 +6,22 @@
 
 	let usuario: IUsuario | null = null;
 
-	let valorInput = "João";
+	let valorInput = "";
 
-	function aoSubmeter() {
-		usuario = {
-			avatar_url: "https://github.com/joao-robertoo.png",
-			login: "joao-robertoo",
-			nome: "João Roberto",
-			perfil_url: "https://github.com/joao-robertoo",
-			repositorios_publicos: 45,
-			seguidores: 4,
-		};
+	async function aoSubmeter() {
+		const respostausuario = await fetch('https://api.github.com/users/${valorInput}');
+		const dadosUsuario = await respostaUsuario.json();
+
+		console.log(dadosUsuario);
+
+		// usuario = {
+		// 	avatar_url: "https://github.com/joao-robertoo.png",
+		// 	login: "joao-robertoo",
+		// 	nome: "João Roberto",
+		// 	perfil_url: "https://github.com/joao-robertoo",
+		// 	repositorios_publicos: 45,
+		// 	seguidores: 4,
+		// };
 	}
 </script>
 
@@ -26,7 +31,7 @@
 
 		<div class="busca-usuario">
 			<form on:submit|preventDefault={aoSubmeter}>
-				<input type="text" class="input" bind:value={valorInput} />
+				<input type="text" class="input" bind:value={valorInput} placeholder="Pesquise aqui o usuário"/>
 
 				<div class="botao-container">
 					<button type="submit" class="botao">Buscar</button>
