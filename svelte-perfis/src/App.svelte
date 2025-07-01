@@ -7,6 +7,10 @@
 
 	let usuario: IUsuario | null = null;
 
+	function definirUsuario(evento: CustomEvent<IUsuario>) {
+		usuario = evento.detail;
+	}
+
 </script>
 
 <div class="app">
@@ -14,7 +18,7 @@
 		<Titulo />
 
 		<div class="busca-usuario">
-			<Formulario bind:usuario />			
+			<Formulario on:aoAlterarUsuario={definirUsuario} />			
 		</div>
 	</header>
 

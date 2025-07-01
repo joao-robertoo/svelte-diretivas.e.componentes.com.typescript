@@ -1,19 +1,26 @@
 <script lang="ts">
+    import { createEventDispatcher } from "svelte";
+
+    import type IUsuario from '../interfaces/IUsuario';
+
     let valorInput = "";
-    export let usuario: UIsuario | null;
+
+    const dispatch = createEventDispatcher<{
+        aoAlterarUsuario: IUsuario
+    }>();
 
     async function aoSubmeter() {
         const respostaUsuario = await fetch("https://api.github.com/users/${valorInput}",);
         const dadosUsuario = await respostaUsuario.json();
 
-        usuario = {
+        dispatch("aoAlterarUsuario", {
             avatar_url: dadosUsuario.avatar_url,
             login: dadosUsuario.login,
             nome: dadosUsuario.name,
             perfil_url: dadosUsuario.html_url,
             repositorios_publicos: dadosUsuario.public_repos,
             seguidores: dadosUsuario.followers,
-        };
+        });
     }
 </script>
 
