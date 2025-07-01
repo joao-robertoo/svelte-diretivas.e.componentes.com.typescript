@@ -14,14 +14,14 @@
 
 		console.log(dadosUsuario);
 
-		// usuario = {
-		// 	avatar_url: "https://github.com/joao-robertoo.png",
-		// 	login: "joao-robertoo",
-		// 	nome: "João Roberto",
-		// 	perfil_url: "https://github.com/joao-robertoo",
-		// 	repositorios_publicos: 45,
-		// 	seguidores: 4,
-		// };
+		usuario = {
+			avatar_url: dadosUsuario.avatar_url,
+			login: dadosUsuario.login,
+			nome: dadosUsuario.name,
+			perfil_url: dadosUsuario.html_url,
+			repositorios_publicos: dadosUsuario.public_repos,
+			seguidores: dadosUsuario.followers,
+		};
 	}
 </script>
 
