@@ -3,7 +3,14 @@
 	import Titulo from './components/Titulo.svelte';
 	import type IUsuario from './interfaces/IUsuario';
 
-	let usuario: IUsuario = {};
+	let usuario: IUsuario = {
+		avatar_url: 'https://github.com/joao-robertoo.png',
+		login: 'joao-robertoo',
+		nome: 'João Roberto',
+		perfil_url: 'https://github.com/joao-robertoo',
+		repositorios_publicos: 45,
+		seguidores: 4
+	};
 
 	let valorInput = "João";
 
@@ -33,23 +40,25 @@
 
 		<div class="usuario">
 			<div class="foto-container">
-				<a href="https://github.com/joao-robertoo">
-					<div class="foto-usuario"></div>
+				<a href={usuario.perfil_url} target="_blank" rel="noopener">
+					<div class="foto-usuario"
+					style:background-image="url({usuario.avatar_url})"
+					></div>
 				</a>
 			</div>
 
 			<div class="detalhes-usuario">
 				<div class="info">
-					Nome: <span>João Roberto</span>
+					Nome: <span>{usuario.nome}</span>
 				</div>
 				<div class="info">
-					Usuário: <span>joao-robertoo</span>
+					Usuário: <span>{usuario.login}</span>
 				</div>
 				<div class="info">
-					Seguidores: <span>4</span>
+					Seguidores: <span>{usuario.seguidores}</span>
 				</div>
 				<div class="info">
-					Repositórios: <span>45</span>
+					Repositórios: <span>{usuario.repositorios_publicos}</span>
 				</div>
 			</div>
 		</div>
@@ -145,7 +154,6 @@
 		border: 4.56px solid #2e80fa;
 		border-radius: 50%;
 		background-size: cover;
-		background-image: url(https://github.com/joao-robertoo.png);
 	}
 
 	.detalhes-usuario {
