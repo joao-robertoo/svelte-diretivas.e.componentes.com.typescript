@@ -1,8 +1,10 @@
 <script lang="ts">
 	import Titulo from './components/Titulo.svelte';
 
+	let valorInput = 'João';
+
 	function aoSubmeter() {
-		console.log("oi");
+		console.log(valorInput);
 	}
 </script>
 
@@ -12,7 +14,7 @@
 
 		<div class="busca-usuario">
 			<form on:submit|preventDefault={aoSubmeter}>
-				<input type="text" class="input">
+				<input type="text" class="input" bind:value={valorInput}>
 
 				<div class="botao-container">
 					<button type="submit" class="botao">Buscar</button>
